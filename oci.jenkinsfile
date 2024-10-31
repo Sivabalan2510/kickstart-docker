@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Clone Git Repository') { 
             steps {
-                sh 'git clone ${GIT_REPO} project/kickstart-docker'
+                sh 'git clone ${GIT_REPO} project/docker-kit'
             }
         }
         stage('Build and Push Docker Images') {
@@ -42,7 +42,6 @@ pipeline {
     post {
         always {
             echo 'Cleaning up Docker images'
-            sh 'docker image prune -f'
         }
     }
 }
