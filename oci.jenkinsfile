@@ -1,0 +1,13 @@
+pipeline {
+    agent any 
+    stages {
+        stage('Download git rep') { 
+            steps {
+                sh(
+                  script:'git clone https://github.com/sloopstash/kickstart-docker.git kickstart-docker',
+                  returnStatus:true)
+            }
+        }
+      }
+    }
+
