@@ -6,6 +6,12 @@ pipeline {
         GIT_REPO = 'https://github.com/Sivabalan2510/kickstart-docker.git'
     }
     stages {
+        stage('Prepare Workspace') { 
+            steps {
+                // Remove the directory if it already exists
+                sh 'rm -rf project/docker-kit'
+            }
+        }
         stage('Clone Git Repository') { 
             steps {
                 sh 'git clone ${GIT_REPO} project/docker-kit'
@@ -42,6 +48,7 @@ pipeline {
     post {
         always {
             echo 'Cleaning up Docker images'
+            sh 'docker image prune -f' // Optional cleanup step
         }
     }
 }
