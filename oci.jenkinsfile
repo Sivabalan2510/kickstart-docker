@@ -8,6 +8,13 @@ pipeline {
                   returnStatus:true)
             }
         }
+        stage('CI: Build OCI images') {
+            steps {
+                  dir('kickstart-docker') {
+                  sh 'sudo docker image build -t sloopstash/nginx:v1.14.0 -f image/nginx/1.14.0/amazon-linux-2.dockerfile image/nginx/1.14.0/context'
+                  }
+                }
+              }
       }
     }
 
