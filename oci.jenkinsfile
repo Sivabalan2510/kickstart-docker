@@ -2,7 +2,7 @@ pipeline {
     agent any 
     environment {
         DOCKER_HUB_CREDENTIALS = credentials('docker-hub-credentials')
-        DOCKER_HUB_USERNAME = 'Sivabalan2510'
+        DOCKER_HUB_USERNAME = 'sivabalan2510'
         GIT_REPO = 'https://github.com/Sivabalan2510/kickstart-docker.git'
     }
     stages {
