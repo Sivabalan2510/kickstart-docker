@@ -3,7 +3,7 @@ pipeline {
     environment {
         DOCKER_HUB_CREDENTIALS = credentials('docker-hub-credentials') // Replace with your actual Jenkins credential ID for Docker Hub
         DOCKER_HUB_USERNAME = 'Sivabalan2510' // Replace with your Docker Hub username
-        GIT_REPO = 'https://github.com/sloopstash/kickstart-docker.git'
+        GIT_REPO = 'https://github.com/sloopstash/kickstart-docker.git project/kickstart-docker'
     }
     stages {
         stage('Clone Git Repository') { 
@@ -14,7 +14,7 @@ pipeline {
         stage('Build and Push Docker Images') {
             steps {
                 script {
-                    def imageDir = 'kickstart-docker/image'
+                    def imageDir = 'kickstart-docker/ociproject'
                     def images = sh(script: "find ${imageDir} -mindepth 2 -maxdepth 2 -type d", returnStdout: true).trim().split("\n")
 
                     images.each { imgPath ->
