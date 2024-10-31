@@ -1,4 +1,4 @@
-# Kickstart Docker
+- Kickstart Docker
 Containerize and deploy popular fullstacks, microservices, and Big Data workloads using Containerd, Docker, Docker compose, and Docker swarm.
 
 
