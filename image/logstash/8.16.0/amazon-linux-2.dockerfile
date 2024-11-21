@@ -4,20 +4,19 @@ FROM sloopstash/base:v1.1.1
 # Install JDK 17
 WORKDIR /tmp
 RUN set -x \
-  && yum update -y \
-  && curl -O https://download.oracle.com/java/17/archive/jdk-17.0.12_linux-x64_bin.rpm \
-  && yum localinstall -y jdk-17.0.12_linux-x64_bin.rpm \
-  && rm jdk-17.0.12_linux-x64_bin.rpm
+  && wget https://download.oracle.com/java/17/archive/jdk-17.0.12_linux-x64_bin.tar.gz \
+  && tar xvzf jdk-17.0.12_linux-x64_bin.tar.gz \
+  && rm jdk-17.0.12_linux-x64_bin.tar.gz
 
-
-ENV LS_JAVA_HOME=/usr/lib/jvm/jdk-17.0.12-oracle-x64
+# Envirnoment path Logstash Java path and Logstash Path
+ENV LS_JAVA_HOME=/jdk-17.0.12
 ENV PATH=$PATH:/usr/share/logstash/bin
 
 # Install Logstash V18.6
 RUN set -x \
-  && wget https://artifacts.elastic.co/downloads/logstash/logstash-8.16.0-x86_64.rpm \
-  && yum localinstall -y logstash-8.16.0-x86_64.rpm \
-  && rm logstash-8.16.0-x86_64.rpm
+  && wget https://artifacts.elastic.co/downloads/logstash/logstash-8.16.0-linux-x86_64.tar.gz \
+  && tar xvzf logstash-8.16.0-linux-x86_64.tar.gz \
+  && rm logstash-8.16.0-linux-x86_64.tar.gz
 
 # Create Logstash directories.
 RUN set -x \
