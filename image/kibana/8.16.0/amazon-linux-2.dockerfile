@@ -14,6 +14,9 @@ RUN set -x \
   && mv kibana-8.16.0 /usr/local/bin/ \
   && rm kibana-8.16.0-linux-x86_64.tar.gz
 
+# set env for kibana
+ENV PATH=$PATH:/usr/local/bin/kibana-8.16.0/bin
+
 # Create Kibana directories.
 RUN set -x \
   && mkdir /opt/kibana \
@@ -25,14 +28,7 @@ RUN set -x \
   && touch /opt/kibana/system/server.pid \
   && touch /opt/kibana/system/supervisor.ini \
   && ln -s /opt/kibana/system/supervisor.ini /etc/supervisord.d/kibana.ini \
-  && chown -R kibana:kibana /usr/local/bin/kibana-8.16.0/data/ \
   && history -c
-
-# switch to system user
-USER kibana
-
-# set env for kibana
-ENV PATH=$PATH:/usr/local/bin/kibana-8.16.0/bin
 
 # Set the working directory
 WORKDIR /opt/kibana
