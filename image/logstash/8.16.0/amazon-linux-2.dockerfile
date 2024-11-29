@@ -9,6 +9,7 @@ RUN set -x \
   && mv jdk-17.0.12 /usr/local/bin/ \
   && rm -f jdk-17_linux-x64_bin.rpm
 
+
 # Envirnoment path Logstash Java path and Logstash Path
 ENV LS_JAVA_HOME=/usr/local/bin/jdk-17.0.12
 ENV PATH=$PATH:/usr/local/bin/logstash-8.16.0/bin
